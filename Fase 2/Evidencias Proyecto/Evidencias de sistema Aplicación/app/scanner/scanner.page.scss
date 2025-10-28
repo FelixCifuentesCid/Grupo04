@@ -1,0 +1,41 @@
+// Centra verticalmente los contenedores
+ion-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; // Alinea al inicio
+}
+
+.button-container {
+  width: 100%;
+  max-width: 500px;
+  padding-bottom: 20px;
+}
+
+// Estilos para el nuevo contenedor del historial
+.history-container {
+  width: 100%;
+  max-width: 500px;
+
+  ion-list-header {
+    font-weight: bold;
+    font-size: 1.1em;
+    padding-left: 5px;
+  }
+
+  ion-list {
+    --ion-background-color: transparent;
+  }
+
+  // Estilo para cada fila de la lista
+  ion-item {
+    --border-radius: 12px;
+    --background: var(--ion-color-tertiary);
+    margin-bottom: 8px;
+    --detail: none; // Quita la flecha
+  }
+}
+
+// Añade un ícono a los botones
+ion-button ion-icon {
+  font-size: 1.4em;
+}

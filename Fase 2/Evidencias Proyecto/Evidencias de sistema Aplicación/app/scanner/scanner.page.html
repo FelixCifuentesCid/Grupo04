@@ -1,0 +1,50 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Lector de Códigos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  
+  <!-- Contenedor para los botones -->
+  <div class="button-container">
+    <ion-button expand="full" (click)="startScan()" [disabled]="isScanning">
+      <ion-icon slot="start" name="search-outline"></ion-icon>
+      {{ isScanning ? 'Escaneando...' : 'Consultar SKU' }}
+    </ion-button>
+  
+    <ion-button expand="full" color="primary" (click)="startScan2()" [disabled]="isScanning">
+      <ion-icon slot="start" name="barcode-outline"></ion-icon>
+      {{ isScanning ? 'Escaneando...' : 'Registrar SKU' }}
+    </ion-button>
+  
+    <ion-button expand="full" color="secondary" (click)="crearTabla()">
+      <ion-icon slot="start" name="duplicate-outline"></ion-icon>
+      Crear Tabla del Día
+    </ion-button>
+  </div>
+
+  <!-- --- SECCIÓN DE HISTORIAL --- -->
+  <!-- Solo se muestra si hay items en el historial -->
+  <div *ngIf="historialEscaneos.length > 0" class="history-container">
+    <ion-list-header>
+      <ion-label color="primary">Escaneos Recientes</ion-label>
+    </ion-list-header>
+
+    <ion-list [inset]="true">
+      <!-- Itera sobre cada item en el array del historial -->
+      <ion-item *ngFor="let item of historialEscaneos">
+        <ion-label>
+          <h2>{{ item.nombre }}</h2>
+          <p>SKU: {{ item.sku }}</p>
+        </ion-label>
+        <!-- Mostramos la cantidad si existe en el objeto -->
+        <ion-note slot="end" color="primary" *ngIf="item.cantidad_escaneos">
+          x{{ item.cantidad_escaneos }}
+        </ion-note>
+      </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>
+

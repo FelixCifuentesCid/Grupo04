@@ -1,0 +1,43 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Añadir Nuevo Producto</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancelar()">Cancelar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label position="stacked">SKU (Código de Barras)</ion-label>
+    <!-- El SKU no se puede editar -->
+    <ion-input [(ngModel)]="producto.sku" readonly></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Nombre del Producto</ion-label>
+    <ion-input [(ngModel)]="producto.nombre" placeholder="Ej: Papas Fritas Kryzpo 130g"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Categoría</ion-label>
+    <ion-input [(ngModel)]="producto.categoria" placeholder="Ej: Snacks"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Precio</ion-label>
+    <ion-input [(ngModel)]="producto.precio" type="number" placeholder="Ej: 1500"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label position="stacked">Ubicación</ion-label>
+    <ion-input [(ngModel)]="producto.ubicacion" placeholder="Ej: Bodega 2"></ion-input>
+  </ion-item>
+  
+</ion-content>
+
+<ion-footer class="ion-padding">
+    <ion-button expand="block" (click)="guardar()" [disabled]="!producto.nombre || !producto.precio">
+      Guardar Producto
+    </ion-button>
+</ion-footer>
